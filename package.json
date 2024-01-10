@@ -6,6 +6,9 @@
   "files": [
     "dist"
   ],
+  "bin": {
+    "del-lock-dependencies": "bin/del-lock-dependencies.cjs"
+  },
   "main": "./dist/del-lock-dependencies.umd.cjs",
   "module": "./dist/del-lock-dependencies.js",
   "types": "./dist/index.d.ts",
@@ -15,12 +18,13 @@
     "require": "./dist/del-lock-dependencies.umd.cjs"
   },
   "scripts": {
+    "preinstall": "node ./dist/bin/del-lock-dependencies.cjs --dependencies=commander",
     "build-lib": "tsc --project dist.tsconfig.json && vite build --config dist.vite.config.ts",
     "build-bin": "tsc --project dist.tsconfig.json && vite build --config bin.vite.config.ts",
     "build": "npm run build-lib && npm run build-bin"
   },
   "devDependencies": {
-    "@types/node": "^20.10.7",
+    "@types/node": "^20.10.8",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
     "vite-plugin-dts": "^3.7.0"

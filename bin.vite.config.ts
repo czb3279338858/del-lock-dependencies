@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   build: {
-    outDir: './dist/lib',
+    outDir: './dist/bin',
     lib: {
       entry: './lib/bin/del-lock-dependencies.ts',
       formats: ['cjs'],
