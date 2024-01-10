@@ -1,7 +1,6 @@
 {
   "name": "del-lock-dependencies",
-  "private": true,
-  "version": "1.0.1",
+  "version": "1.0.0",
   "type": "module",
   "files": [
     "dist"
