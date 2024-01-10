@@ -1,11 +1,11 @@
 import { DelLockDependenciesArg } from "./type";
 const fs = require('fs')
 
-export default function removeNpmLock(arg: DelLockDependenciesArg) {
+export default function delNpmDependencies(arg: DelLockDependenciesArg) {
     const dependencies = [...arg.dependencies]
-    const f = fs.readFileSync('package-lock.json', 'utf-8')
-    const obj = JSON.parse(f)
-    const dependenciesObj = { ...obj.dependencies }
+    const lockJson = fs.readFileSync('package-lock.json', 'utf-8')
+    const lockObj = JSON.parse(lockJson)
+    const dependenciesObj = { ...lockObj.dependencies }
     for (const key in dependenciesObj) {
         const dependenciesIndex = dependencies.indexOf(key)
         if (dependenciesIndex > -1) {
@@ -14,6 +14,6 @@ export default function removeNpmLock(arg: DelLockDependenciesArg) {
         }
         if (!dependencies.length) break
     }
-    obj.dependencies = dependenciesObj
-    fs.writeFileSync('package-lock.json', JSON.stringify(obj, null, 2))
+    lockObj.dependencies = dependenciesObj
+    fs.writeFileSync('package-lock.json', JSON.stringify(lockObj, null, 2))
 }

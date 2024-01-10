@@ -1,4 +1,5 @@
 import delNpmDependencies from "./del-npm-dependencies";
+import delYarnDependencies from "./del-yarn-dependencies";
 import { DelLockDependenciesArg } from "./type";
 
 export default function delLockDependencies(arg: DelLockDependenciesArg) {
@@ -7,7 +8,9 @@ export default function delLockDependencies(arg: DelLockDependenciesArg) {
         case 'npm':
             delNpmDependencies(arg)
             break;
-
+        case 'yarn':
+            delYarnDependencies(arg)
+            break;
         default:
             break;
     }

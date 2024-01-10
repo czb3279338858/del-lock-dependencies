@@ -1,4 +1,4 @@
 export interface DelLockDependenciesArg {
-    type: "npm",
+    type: "npm" | "yarn",
     dependencies: string[]
 }
