@@ -3,7 +3,7 @@ Delete some dependencies in the lock file before installing dependencies in pack
 
 # Installing
 ```
-npm install del-npm-dependencies -D
+npm install del-lock-dependencies -D
 ```
 
 # Document
