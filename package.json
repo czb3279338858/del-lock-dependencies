@@ -6,8 +6,9 @@
     "dist"
   ],
   "bin": {
-    "del-lock-dependencies": "bin/del-lock-dependencies.cjs"
+    "del-lock-dependencies": "dist/bin/del-lock-dependencies.cjs"
   },
+  "repository": "https://github.com/czb3279338858/del-lock-dependencies",
   "main": "./dist/del-lock-dependencies.umd.cjs",
   "module": "./dist/del-lock-dependencies.js",
   "types": "./dist/index.d.ts",
