@@ -18,6 +18,7 @@
     "require": "./dist/del-lock-dependencies.umd.cjs"
   },
   "scripts": {
+    "postinstall": "node ./dist/bin/del-lock-dependencies.cjs --dependencies @types/node",
     "build-lib": "tsc --project dist.tsconfig.json && vite build --config dist.vite.config.ts",
     "build-bin": "tsc --project dist.tsconfig.json && vite build --config bin.vite.config.ts",
     "build": "npm run build-lib && npm run build-bin",
@@ -31,6 +32,6 @@
   },
   "dependencies": {
     "@yarnpkg/lockfile": "^1.1.0",
-    "commander": "^11.1.0"
+    "commander": "^9"
   }
 }

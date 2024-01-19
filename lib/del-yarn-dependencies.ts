@@ -1,10 +1,11 @@
-import { DelLockDependenciesArg } from "./type"
+import { DelDependenciesParams } from "./type"
 const fs = require('fs')
 const lockfile = require('@yarnpkg/lockfile')
 
-export default function delYarnDependencies(arg: DelLockDependenciesArg) {
+export default function delYarnDependencies(arg: DelDependenciesParams) {
     const dependencies = [...arg.dependencies]
-    const file = fs.readFileSync('yarn.lock', 'utf-8')
+    const path = arg.path
+    const file = fs.readFileSync(path, 'utf-8')
     const lock = lockfile.parse(file)
     const dependenciesObj = { ...lock.object }
     for (const key in dependenciesObj) {
@@ -15,5 +16,5 @@ export default function delYarnDependencies(arg: DelLockDependenciesArg) {
         }
         if (!dependencies.length) break
     }
-    fs.writeFileSync('yarn.lock', lockfile.stringify(dependenciesObj))
+    fs.writeFileSync(path, lockfile.stringify(dependenciesObj))
 }

@@ -1,4 +1,7 @@
 export interface DelLockDependenciesArg {
-    type: "npm" | "yarn",
     dependencies: string[]
+}
+
+export type DelDependenciesParams = DelLockDependenciesArg & {
+    path: string
 }

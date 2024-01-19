@@ -1,9 +1,10 @@
-import { DelLockDependenciesArg } from "./type";
+import { DelDependenciesParams } from "./type";
 const fs = require('fs')
 
-export default function delNpmDependencies(arg: DelLockDependenciesArg) {
+export default function delNpmDependencies(arg: DelDependenciesParams) {
     const dependencies = [...arg.dependencies]
-    const lockJson = fs.readFileSync('package-lock.json', 'utf-8')
+    const path = arg.path
+    const lockJson = fs.readFileSync(path, 'utf-8')
     const lockObj = JSON.parse(lockJson)
     const dependenciesObj = { ...lockObj.dependencies }
     for (const key in dependenciesObj) {
@@ -15,5 +16,5 @@ export default function delNpmDependencies(arg: DelLockDependenciesArg) {
         if (!dependencies.length) break
     }
     lockObj.dependencies = dependenciesObj
-    fs.writeFileSync('package-lock.json', JSON.stringify(lockObj, null, 2))
+    fs.writeFileSync(path, JSON.stringify(lockObj, null, 2))
 }
