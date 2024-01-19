@@ -11,16 +11,16 @@ npm install del-lock-dependencies -D
 
 | Params | Default | Options | Explain |
 | ---- | ---- | ---- | ---- |
-| type | npm | yarn、npm | The package in the corresponding management tool lock file will be deleted based on this parameter. |
 | dependencies | undefined |  | The incoming package name will be removed from the lock file, and multiple package names are supported. |
 
 ``` json
 {
     "scripts":{
-        "preinstall":"npx del-lock-dependencies --type yarn --dependencies vue vue-router"
+        "preinstall":"npx del-lock-dependencies --dependencies vue vue-router"
     }
 }
 ```
+- postinstall在yarn和npm中表现不一致，npm中在postinstall后才创建锁文件。这句话翻译成英文
 
 2. Extend your own methods.
 - The parameters are the same as above.
@@ -29,7 +29,6 @@ npm install del-lock-dependencies -D
 import delLockDependencies from 'del-lock-dependencies';
 
 delLockDependencies({
-    type:'npm',
     dependencies:['vue','vue-router']
 })
 ```
