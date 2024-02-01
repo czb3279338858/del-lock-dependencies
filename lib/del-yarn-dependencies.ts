@@ -7,13 +7,14 @@ export default function delYarnDependencies(arg: DelDependenciesParams) {
     const path = arg.path
     const file = fs.readFileSync(path, 'utf-8')
     const lock = lockfile.parse(file)
+    const lockObj = { ...lock.object }
     for (const key in lock.object) {
         const dependenciesIndex = dependencies.findIndex((v) => key.startsWith(`${v}@`))
         if (dependenciesIndex > -1) {
             dependencies.splice(dependenciesIndex, 1)
-            delete lock.object[key]
+            delete lockObj[key]
         }
         if (!dependencies.length) break
     }
-    fs.writeFileSync(path, lockfile.stringify(lock.object))
+    fs.writeFileSync(path, lockfile.stringify(lockObj))
 }
