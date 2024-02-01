@@ -6,11 +6,12 @@ export default function delNpmDependencies(arg: DelDependenciesParams) {
     const path = arg.path
     const lockJson = fs.readFileSync(path, 'utf-8')
     const lockObj = JSON.parse(lockJson)
-
-    dependencies.forEach(d => {
-        const key = `node_modules/${d}`
-        if (lockObj.packages[key]) delete lockObj.packages[key]
-    })
+    if (lockObj.packages) {
+        dependencies.forEach(d => {
+            const key = `node_modules/${d}`
+            if (lockObj.packages[key]) delete lockObj.packages[key]
+        })
+    }
     if (lockObj.dependencies) {
         dependencies.forEach(d => {
             if (lockObj.dependencies[d]) {
