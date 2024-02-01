@@ -2,19 +2,22 @@ import { DelDependenciesParams } from "./type";
 const fs = require('fs')
 
 export default function delNpmDependencies(arg: DelDependenciesParams) {
-    const dependencies = [...arg.dependencies]
+    let dependencies = [...arg.dependencies]
     const path = arg.path
     const lockJson = fs.readFileSync(path, 'utf-8')
     const lockObj = JSON.parse(lockJson)
-    const dependenciesObj = { ...lockObj.dependencies }
-    for (const key in dependenciesObj) {
-        const dependenciesIndex = dependencies.indexOf(key)
-        if (dependenciesIndex > -1) {
-            dependencies.splice(dependenciesIndex, 1)
-            delete dependenciesObj[key]
-        }
-        if (!dependencies.length) break
+
+    dependencies.forEach(d => {
+        const key = `node_modules/${d}`
+        if (lockObj.packages[key]) delete lockObj.packages[key]
+    })
+    if (lockObj.dependencies) {
+        dependencies.forEach(d => {
+            if (lockObj.dependencies[d]) {
+                delete lockObj.dependencies[d]
+            }
+        })
     }
-    lockObj.dependencies = dependenciesObj
+
     fs.writeFileSync(path, JSON.stringify(lockObj, null, 2))
 }
