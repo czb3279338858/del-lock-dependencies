@@ -20,7 +20,8 @@ npm install del-lock-dependencies -D
     }
 }
 ```
-- postinstall在yarn和npm中表现不一致，npm中在postinstall后才创建锁文件。这句话翻译成英文
+- preinstall：Indicating that a script is executed before dependencies are installed, the behavior is inconsistent between Yarn and npm. Yarn recommends using postinstall and not committing the lock file of the package that needs to be removed.
+- postinstall：It indicates that a script is executed after dependencies are installed, and the behavior is inconsistent between Yarn and npm. In npm, the lock file is created after the postinstall.
 
 2. Extend your own methods.
 - The parameters are the same as above.
