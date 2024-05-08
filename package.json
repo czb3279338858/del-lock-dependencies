@@ -1,7 +1,6 @@
 {
   "name": "del-lock-dependencies",
   "version": "1.0.8",
-  "type": "module",
   "files": [
     "dist"
   ],
@@ -18,17 +17,18 @@
     "require": "./dist/del-lock-dependencies.umd.cjs"
   },
   "scripts": {
-    "postinstall": "node ./dist/bin/del-lock-dependencies.cjs --dependencies @types/node",
-    "build-lib": "tsc --project dist.tsconfig.json && vite build --config dist.vite.config.ts",
-    "build-bin": "tsc --project dist.tsconfig.json && vite build --config bin.vite.config.ts",
+    "build-lib": "vite build --config dist.vite.config.ts",
+    "build-bin": "vite build --config bin.vite.config.ts",
     "build": "npm run build-lib && npm run build-bin",
-    "release": "npm run build && npm version patch && npm publish"
+    "release": "npm run build && npm version patch && npm publish",
+    "dev": "ts-node lib/bin/del-lock-dependencies.ts -d ts-node"
   },
   "devDependencies": {
     "@types/node": "^20.10.8",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
-    "vite-plugin-dts": "^3.7.0"
+    "vite-plugin-dts": "^3.7.0",
+    "ts-node": "^10.9.2"
   },
   "dependencies": {
     "@yarnpkg/lockfile": "^1.1.0",
