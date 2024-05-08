@@ -5,7 +5,7 @@
     "dist"
   ],
   "bin": {
-    "del-lock-dependencies": "dist/bin/del-lock-dependencies.cjs"
+    "del-lock-dependencies": "dist/bin/del-lock-dependencies.js"
   },
   "repository": "https://github.com/czb3279338858/del-lock-dependencies",
   "main": "./dist/del-lock-dependencies.umd.cjs",
