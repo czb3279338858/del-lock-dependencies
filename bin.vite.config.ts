@@ -5,7 +5,8 @@ export default defineConfig({
     outDir: './dist/bin',
     lib: {
       entry: './lib/bin/del-lock-dependencies.ts',
-      formats: ['cjs'],
+      formats: ['umd'],
+      name: 'DelLockDependencies',
       fileName: 'del-lock-dependencies',
     }
   }

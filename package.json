@@ -5,7 +5,7 @@
     "dist"
   ],
   "bin": {
-    "del-lock-dependencies": "dist/bin/del-lock-dependencies.js"
+    "del-lock-dependencies": "dist/bin/del-lock-dependencies.umd.js"
   },
   "repository": "https://github.com/czb3279338858/del-lock-dependencies",
   "main": "./dist/del-lock-dependencies.umd.cjs",
@@ -21,7 +21,8 @@
     "build-bin": "vite build --config bin.vite.config.ts",
     "build": "npm run build-lib && npm run build-bin",
     "release": "npm run build && npm version patch && npm publish",
-    "dev": "ts-node lib/bin/del-lock-dependencies.ts -d ts-node"
+    "dev": "ts-node lib/bin/del-lock-dependencies.ts -d ts-node",
+    "build-dev":"npm run build && node dist/bin/del-lock-dependencies.umd.js --dependencies ts-node"
   },
   "devDependencies": {
     "@types/node": "^20.10.8",
