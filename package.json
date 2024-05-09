@@ -1,6 +1,6 @@
 {
   "name": "del-lock-dependencies",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "files": [
     "dist"
   ],
@@ -22,7 +22,7 @@
     "build": "npm run build-lib && npm run build-bin",
     "release": "npm run build && npm version patch && npm publish",
     "dev": "ts-node lib/bin/del-lock-dependencies.ts -d ts-node",
-    "build-dev":"npm run build && node dist/bin/del-lock-dependencies.umd.js --dependencies ts-node"
+    "build-dev": "npm run build && node dist/bin/del-lock-dependencies.umd.js --dependencies ts-node"
   },
   "devDependencies": {
     "@types/node": "^20.10.8",
