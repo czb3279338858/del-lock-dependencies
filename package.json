@@ -9,11 +9,11 @@
   },
   "repository": "https://github.com/czb3279338858/del-lock-dependencies",
   "main": "./dist/del-lock-dependencies.umd.cjs",
-  "module": "./dist/del-lock-dependencies.js",
+  "module": "./dist/del-lock-dependencies.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     "types": "./dist/index.d.ts",
-    "import": "./dist/del-lock-dependencies.js",
+    "import": "./dist/del-lock-dependencies.mjs",
     "require": "./dist/del-lock-dependencies.umd.cjs"
   },
   "scripts": {
